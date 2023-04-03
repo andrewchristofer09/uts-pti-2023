@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="NFT">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/9d53a2f771.js" crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Kelompok dead by daylight</title>
+    <b:skin>
+        <![CDATA[ ]]>
+    </b:skin>
+</head>
+<style type='text/css'>
+    canvas {
+        width: 190px;
+        display: block;
+        margin: 0 auto;
+        border: solid 6 px #444;
+    }
+    
+    body {
+        margin: 0;
+        font-family: arial;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+        height: 100%;
+    }
+    
+    #lili img {
+        width: 60px;
+    }
+    
+    table {
+        border: 0px solid;
+        width: 400px;
+    }
+    
+    .DagTo {
+        margin-bottom: 25px;
+        width: 100%;
+        border-radius: 2px;
+        padding-bottom: 0
+    }
+    
+    .DagPlaArea {
+        width: 40%;
+        transition: width .2s;
+        position: relative;
+        padding: 0;
+        overflow: hidden;
+        line-height: 20px
+    }
+    
+    #server {
+        overflow: hidden;
+        margin-bottom: 14px;
+        text-align: center;
+        margin-top: 14px
+    }
+    
+    #server ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        vertical-align: baseline
+    }
+    
+    #server ul li {
+        display: inline-block;
+        margin: 5px;
+        width: 23%
+    }
+    
+    #server .DagPlayOpt {
+        width: auto;
+        background: #fff;
+        padding: 7px 1px;
+        font-weight: 400;
+        cursor: pointer;
+        font-size: 14px;
+        border-radius: 2px
+    }
+    
+    #server .DagPlayOpt.on {
+        color: #fff;
+        background: #3c97f3
+    }
+    
+    .DagPlayOpt.on:before {
+        content: '';
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8,5.14V19.14L19,12.14L8,5.14Z' fill='%23fff'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center center;
+        display: inline-block;
+        padding-right: 6px;
+        vertical-align: middle;
+        min-width: 20px;
+        min-height: 20px
+    }
+    
+    .video-content {
+        background: #000;
+        overflow: hidden
+    }
+    
+    #embed_holder,
+    #pembed,
+    .video-content {
+        position: relative
+    }
+    
+    #pembed {
+        max-width: 100%;
+        height: 0;
+        padding-bottom: 56.25%
+    }
+    
+    .playerload {
+        width: 80px;
+        height: 80px;
+        border-radius: 150px;
+        border: 15px solid #fff;
+        border-top-color: rgba(0, 0, 0, .3);
+        box-sizing: border-box;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -38px;
+        margin-left: -38px;
+        animation: playerload 1.2s linear infinite;
+        -webkit-animation: playerload 1.2s linear infinite
+    }
+    
+    @keyframes playerload {
+        0% {
+            transform: rotate(0deg)
+        }
+        to {
+            transform: rotate(360deg)
+        }
+    }
+    
+    @-webkit-keyframes playerload {
+        0% {
+            -webkit-transform: rotate(0deg)
+        }
+        to {
+            -webkit-transform: rotate(360deg)
+        }
+    }
+    
+    #embed_holder embed,
+    #embed_holder iframe {
+        z-index: 1;
+        position: absolute;
+        border: none;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        margin: 0;
+        padding: 0
+    }
+    
+    .video-nav {
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        font-size: .85em;
+        color: #888;
+        padding: 7px 10px
+    }
+    
+    .itemleft {
+        overflow: hidden;
+        font-weight: 300;
+        float: left
+    }
+    
+    .itemleft .icon {
+        display: inline-block;
+        margin-right: 5px;
+        padding: 5px;
+        font-size: 14px;
+        cursor: pointer
+    }
+    
+    .itemleft .icon.turnedOff {
+        color: #fff;
+        z-index: 999999;
+        position: relative;
+        background: #fff
+    }
+    
+    .itemleft .icon svg,
+    span.light:before {
+        color: #3c97f3;
+        vertical-align: middle;
+        border-radius: 10px
+    }
+    
+    .itemleft .icon svg {
+        width: 24px;
+        height: 24px;
+        font-size: 14px;
+        padding: 4px;
+        margin-right: 3px
+    }
+    
+    .itemleft .icon span {
+        line-height: 20px;
+        color: #222d34;
+        font-weight: 400
+    }
+    
+    span.light:before {
+        content: '';
+        background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20,11H23V13H20V11M1,11H4V13H1V11M13,1V4H11V1H13M4.92,3.5L7.05,5.64L5.63,7.05L3.5,4.93L4.92,3.5M16.95,5.63L19.07,3.5L20.5,4.93L18.37,7.05L16.95,5.63M12,6A6,6 0 0,1 18,12C18,14.22 16.79,16.16 15,17.2V19A1,1 0 0,1 14,20H10A1,1 0 0,1 9,19V17.2C7.21,16.16 6,14.22 6,12A6,6 0 0,1 12,6M14,21V22A1,1 0 0,1 13,23H11A1,1 0 0,1 10,22V21H14M11,18H13V15.87C14.73,15.43 16,13.86 16,12A4,4 0 0,0 12,8A4,4 0 0,0 8,12C8,13.86 9.27,15.43 11,15.87V18Z' fill='%233c97f3'/%3E%3C/svg%3E") center/20px no-repeat;
+        display: inline-block;
+        margin-right: 7px;
+        min-width: 20px;
+        min-height: 20px
+    }
+    
+    .PlayShare {
+        overflow: hidden;
+        width: 100%;
+        padding-top: 0;
+        line-height: 20px
+    }
+    
+    #shadow,
+    .PlayShare.None {
+        display: none;
+        transition: .5s
+    }
+    
+    #shadow {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, .93);
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        transition: all .5s ease
+    }
+    
+    .DaBlock,
+    .DaNone {
+        display: none;
+        transition: .5s
+    }
+    
+    .DaBlock {
+        display: block!important
+    }
+    
+    .pagi {
+        background: url('Gambar/Siang.jpg');
+    }
+    
+    .siang {
+        background: url('Gambar/Siang.jpg');
+    }
+    
+    .sore {
+        background: url('Gambar/Siang.jpg');
+    }
+    
+    .malam {
+        background: url('Gambar/Malem.jpg');
+    }
+    
+    .health-bar {
+        position: relative;
+        display: inline-block;
+        margin: 6px 0;
+    }
+    
+    .health-bar:before {
+        content: '';
+        z-index: -1;
+        position: absolute;
+        top: -6px;
+        width: 16px;
+        height: 28px;
+        background-image: url('http://i.imgur.com/s0bMFR7.png');
+        background-position: -288px -2px;
+        background-repeat: none;
+    }
+    
+    .health-bar:after {
+        content: '';
+        z-index: -1;
+        position: absolute;
+        top: -6px;
+        right: 0;
+        width: 16px;
+        height: 28px;
+        background-image: url('http://i.imgur.com/s0bMFR7.png');
+        background-position: -304px -2px;
+        background-repeat: none;
+    }
+    
+    .health-bar-glass {
+        display: inline-block;
+        width: 200px;
+        height: 16px;
+        z-index: 10;
+        border: 2px solid #000000;
+        box-shadow: inset 0 0 0 2px #dbd75d;
+    }
+    
+    .health-bar-fluid {
+        width: 60%;
+        height: 100%;
+        background: #d34549;
+        box-shadow: inset 0 3px 0 -1px #d3aa9a, inset 0 -4px 0 -2px #4d494d, inset 4px 0 0 -2px #4d494d, inset -4px 0 0 -2px #4d494d;
+    }
+    
+    .anim-width {
+        -webkit-animation: anim50to100 120s infinite;
+        animation: anim50to100 120s infinite;
+    }
+    
+    @-webkit-keyframes anim50to100 {
+        0% {
+            width: 50%;
+        }
+        50% {
+            width: 0%;
+        }
+        100% {
+            width: 50%;
+        }
+    }
+    
+    @keyframes anim50to100 {
+        0% {
+            width: 50%;
+        }
+        50% {
+            width: 0%;
+        }
+        100% {
+            width: 50%;
+        }
+    }
+    
+    html,
+    body {
+        padding: 0;
+        margin: 0;
+    }
+    
+    html {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+    }
+    
+    body {
+        min-width: 100%;
+        min-height: 100%;
+    }
+    
+    *,
+    *:before,
+    *:after {
+        box-sizing: inherit;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <br>
+        <center>
+            <a id="lili" class="navbar-brand" href="Index.html">
+                <img src="Gambar/sxx.png" class="img-fluid" /></a>
+            <h4><b>Kelompok dead by daylight</b></h4>
+            <center>
+                <hr>
+                <table>
+                    <td>
+                        <h5>Joy</h5>
+                        <div class="health-bar">
+                            <div class="health-bar-glass">
+                                <div class="health-bar-fluid anim-width"></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <h5>Energy</h5>
+                        <div class="health-bar">
+                            <div class="health-bar-glass">
+                                <div class="health-bar-fluid anim-width"></div>
+                            </div>
+                        </div>
+                    </td>
+                </table>
+                <table>
+                    <td>
+                        <h5>Hunger</h5>
+                        <div class="health-bar">
+                            <div class="health-bar-glass">
+                                <div class="health-bar-fluid anim-width"></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <h5>Thrist</h5>
+                        <div class="health-bar">
+                            <div class="health-bar-glass">
+                                <div class="health-bar-fluid anim-width"></div>
+                            </div>
+                        </div>
+                    </td>
+                </table>
+                        <h3>Level 1</h3>
+
+                <script>
+                    // Inisialisasi status pemain
+                    let level = 1;
+                    let totalStatus = 50;
+                    let playStatus = 0;
+                    let sleepStatus = 0;
+                    let hungerStatus = 0;
+
+                    // Inisialisasi konstanta untuk mengatur peningkatan dan pengurangan status
+                    const PLAY_INCREASE = 10;
+                    const SLEEP_DECREASE = 5;
+                    const HUNGER_INCREASE = 5;
+                    const IDLE_DECREASE = 2;
+
+                    // Fungsi untuk mengurangi status secara otomatis ketika pemain idle
+                    function idle() {
+                        totalStatus -= IDLE_DECREASE;
+                        updateStatus();
+                    }
+
+                    // Fungsi untuk mengatur peningkatan dan pengurangan status saat melakukan aktivitas
+                    function doActivity(activity) {
+                        switch (activity) {
+                            case 'play':
+                                playStatus += PLAY_INCREASE;
+                                sleepStatus -= SLEEP_DECREASE;
+                                hungerStatus += HUNGER_INCREASE;
+                                break;
+                            case 'sleep':
+                                sleepStatus += PLAY_INCREASE;
+                                playStatus -= SLEEP_DECREASE;
+                                hungerStatus += HUNGER_INCREASE;
+                                break;
+                            case 'eat':
+                                hungerStatus -= HUNGER_INCREASE;
+                                break;
+                            case 'drink':
+                                hungerStatus -= HUNGER_INCREASE;
+                                break;
+                            default:
+                                console.log('Invalid activity');
+                        }
+
+                        // Batasi nilai status dari 0 sampai 100
+                        totalStatus = Math.max(Math.min(totalStatus + playStatus + sleepStatus + hungerStatus, 100), 0);
+
+                        // Perbarui tampilan status
+                        updateStatus();
+                    }
+
+                    // Fungsi untuk memperbarui tampilan status
+                    function updateStatus() {
+                        // Perbarui tampilan level
+                        if (totalStatus >= 80) {
+                            level = 3;
+                            // Ganti avatar hewan piaraan untuk level dewasa
+                        } else if (totalStatus >= 50) {
+                            level = 2;
+                            // Ganti avatar hewan piaraan untuk level anak
+                        } else {
+                            level = 1;
+                            // Ganti avatar hewan piaraan untuk level bayi
+                        }
+
+                        // Perbarui tampilan status
+                        document.getElementById('level').innerText = `Level: ${level}`;
+                        document.getElementById('totalStatus').innerText = `Total Status: ${totalStatus}`;
+                        document.getElementById('playStatus').innerText = `Play Status: ${playStatus}`;
+                        document.getElementById('sleepStatus').innerText = `Sleep Status: ${sleepStatus}`;
+                        document.getElementById('hungerStatus').innerText = `Hunger Status: ${hungerStatus}`;
+                    }
+
+                    // Inisialisasi event listener pada tombol aktivitas
+                    document.getElementById('playButton').addEventListener('click', () => {
+                        doActivity('play');
+                    });
+                    document.getElementById('sleepButton').addEventListener('click', () => {
+                        doActivity('sleep');
+                    });
+                    document.getElementById('eatButton').addEventListener('click', () => {
+                        doActivity('eat');
+                    });
+                    document.getElementById('drinkButton').addEventListener('click', () => {
+                        doActivity('drink');
+                    });
+
+                    // Jalankan fungsi idle setiap 10 detik untuk mengurangi status saat pemain idle
+                    setInterval(idle, 10000);
+
+
+                    $('.project-percent').each(function() {
+                        var $this = $(this);
+                        var percent = $this.attr('percent');
+                        $this.css("width", percent + '%');
+                        $({
+                            animatedValue: 0
+                        }).animate({
+                            animatedValue: percent
+                        }, {
+                            duration: 2000,
+                            step: function() {
+                                $this.attr('percent', Math.floor(this.animatedValue) + '%');
+                            },
+                            complete: function() {
+                                $this.attr('percent', Math.floor(this.animatedValue) + '%');
+                            }
+                        });
+                    });
+                </script>
+                <script>
+                    //<![CDATA[
+                    var h = (new Date()).getHours();
+                    var m = (new Date()).getMinutes();
+                    var s = (new Date()).getSeconds();
+                    if (h >= 4 && h < 10) document.writeln("Selamat pagi");
+                    if (h >= 10 && h < 15) document.writeln("Selamat siang");
+                    if (h >= 15 && h < 18) document.writeln("Selamat sore");
+                    if (h >= 18 || h < 4) document.writeln("Selamat malam");
+                    var nama = prompt("Masukan Nama Anda atau Bermain Menjadi Tamu Langsung Klik Ok", "");
+                    document.write("<p>" + nama + "</p>");
+                    //]]>
+                </script>
+                <p style="font-size: 20px; font-family: arial;" id="jam"></p>
+            </center>
+
+            <center>
+                <div class="container">
+                    <div id="shadow"></div>
+                    <div class="DagPlaArea DagTo">
+                        <div id="PlayVideo" class="video-content">
+                            <div id="embed_holder">
+                                <div class="player-embed" id="pembed">
+                                    <div class="playerload"></div>
+                                    <div id="player_embed">
+                                        <div class="pframe"><iframe src="" frameborder="0" marginwidth="0" marginheight="0" scrolling="NO" width="100%" height="100%" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="server_option">
+                            <div id="server">
+                                <ul>
+                                    <li button id="playButton">
+                                        <div class="DagPlayOpt" data-embed="https://media.tenor.com/CYNUQucezx4AAAAC/tidur-tepar.gif" data-id="Server-2">
+                                            <span><i class="fa-solid fa-bed fa-lg"></i></span> </div>
+                                    </li>
+                                    <li>
+                                        <div class="DagPlayOpt" data-embed="https://media.tenor.com/ZgkErgdjNlsAAAAd/dimana-kamu-panda.gif" data-id="Server-3">
+                                            <span><i class="fa-solid fa-gamepad fa-lg"></i></span> </div>
+                                    </li>
+                                    <li>
+                                        <div class="DagPlayOpt" data-embed="https://media.tenor.com/7f8AlSm_NpkAAAAd/monkey-food.gif" data-id="Server-3">
+                                            <span><i class="fa-solid fa-cookie-bite fa-xl"></i></span> </div>
+                                    </li>
+                                    <li>
+                                        <div class="DagPlayOpt" data-embed="https://media.tenor.com/pZX-OEZxut0AAAAC/scooby-anjing.gif" data-id="Server-3">
+                                            <span><i class="fa-solid fa-notes-medical"></i></span> </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </div>
+    </center>
+    <script>
+        (function() {
+            const e = document.querySelectorAll(".DagPlayOpt");
+            e.length > 0 && (e.forEach(t => {
+                t.addEventListener("click", function(t) {
+                    const n = t.currentTarget,
+                        c = n.dataset.embed;
+                    document.querySelector("#pembed iframe").src = c, document.querySelector("#pembed iframe").contentWindow.location.replace(c), e.forEach(e => e.classList.remove("on")), n.classList.add("on");
+                    const o = document.querySelectorAll(".resIn");
+                    o.length > 0 && o.forEach(e => {
+                        e.id == n.dataset.id ? e.style.display = "block" : e.style.display = "none"
+                    })
+                })
+            }), e[0].click());
+            const t = document.getElementById("shadow"),
+                n = document.querySelector(".DagLight");
+            t && n && (t.style.display = "none", n.addEventListener("click", function(e) {
+                const n = e.currentTarget;
+                t.style.height = document.body.scrollHeight, "none" == t.style.display ? (n.querySelector("span").innerHTML = "Turn on Light", n.classList.add("turnedOff"), t.style.display = "block") : (n.querySelector("span").innerHTML = "Turn off Light", n.classList.remove("turnedOff"), t.style.display = "none")
+            }));
+            const c = document.querySelector(".DagShre");
+            c.addEventListener("click", function(e) {
+                const t = document.querySelector(".DaNone");
+                t && t.classList.toggle("DaBlock")
+            })
+        })();
+    </script>
+    <script type="text/javascript">
+        window.onload = function() {
+            jam();
+        }
+
+        function jam() {
+            var e = document.getElementById('jam'),
+                d = new Date(),
+                h, m, s;
+            h = d.getHours();
+            m = set(d.getMinutes());
+            s = set(d.getSeconds());
+
+            e.innerHTML = h + ':' + m + ':' + s;
+
+            setTimeout('jam()', 1000);
+        }
+
+        function set(e) {
+            e = e < 10 ? '0' + e : e;
+            return e;
+        }
+    </script>
+    <script type='text/javascript'>
+        //<![CDATA[
+        $(document).ready(function() {
+            var d = new Date();
+            var n = d.getHours();
+            if (n > 18 || n < 6)
+                document.body.className = "malam";
+            else if (n > 6 && n < 11)
+                document.body.className = "pagi";
+            else if (n > 15 && n < 18)
+                document.body.className = "sore";
+            else
+                document.body.className = "siang";
+        });
+        //]]>
+    </script>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+
+</html>
